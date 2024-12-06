@@ -1,5 +1,9 @@
 # Trabajo Práctico BDD
 
+## Integrantes
+- Alejo Ordoñez - 108397
+- Lorenzo Minervino - 107863
+
 ## Screenshot de la app
 ![](screenshot.png)
 
