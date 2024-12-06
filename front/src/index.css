@@ -54,6 +54,51 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+div {
+  margin: 0 auto;
+  max-width: 640px;
+  padding: 0 1.6em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+}
+
+.table-container, .form-container {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f227;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f900;
+}
+
+tr:hover {
+  background-color: #dddddd40;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

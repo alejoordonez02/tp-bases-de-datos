@@ -122,151 +122,147 @@ function App() {
   const tableNoSQL = useTable({ columns, data: dataNoSQL });
 
   return (
-    <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <div>
-          <h2>SQL Data</h2>
-          <table {...tableSQL.getTableProps()}>
-            <thead>
-              {tableSQL.headerGroups.map(headerGroup => (
-                <tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.id}>
-                  {headerGroup.headers.map(column => (
-                    <th {...column.getHeaderProps()} key={column.id}>{column.render('Header')}</th>
+    <div className="container">
+      <div className="table-container">
+        <h2>SQL Data</h2>
+        <table {...tableSQL.getTableProps()}>
+          <thead>
+            {tableSQL.headerGroups.map(headerGroup => (
+              <tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.id}>
+                {headerGroup.headers.map(column => (
+                  <th {...column.getHeaderProps()} key={column.id}>{column.render('Header')}</th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody {...tableSQL.getTableBodyProps()}>
+            {tableSQL.rows.map(row => {
+              tableSQL.prepareRow(row);
+              return (
+                <tr {...row.getRowProps()} key={row.original.nid}>
+                  {row.cells.map(cell => (
+                    <td {...cell.getCellProps()} key={cell.column.id}>{cell.render('Cell')}</td>
                   ))}
                 </tr>
-              ))}
-            </thead>
-            <tbody {...tableSQL.getTableBodyProps()}>
-              {tableSQL.rows.map(row => {
-                tableSQL.prepareRow(row);
-                return (
-                  <tr {...row.getRowProps()} key={row.original.nid}>
-                    {row.cells.map(cell => (
-                      <td {...cell.getCellProps()} key={cell.column.id}>{cell.render('Cell')}</td>
-                    ))}
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-          <div>
-            <h2>Agregar Persona SQL</h2>
-            <input
-              type="text"
-              name="nid"
-              placeholder="DNI"
-              value={newPersonSQL.nid}
-              onChange={handleInputChangeSQL}
-            />
-            <input
-              type="text"
-              name="firstName"
-              placeholder="Nombre"
-              value={newPersonSQL.firstName}
-              onChange={handleInputChangeSQL}
-            />
-            <input
-              type="text"
-              name="lastName"
-              placeholder="Apellido"
-              value={newPersonSQL.lastName}
-              onChange={handleInputChangeSQL}
-            />
-            <input
-              type="number"
-              name="age"
-              placeholder="Edad"
-              value={newPersonSQL.age}
-              onChange={handleInputChangeSQL}
-            />
-            <input
-              type="text"
-              name="gender"
-              placeholder="Género"
-              value={newPersonSQL.gender}
-              onChange={handleInputChangeSQL}
-            />
-            <input
-              type="text"
-              name="nationality"
-              placeholder="Nacionalidad"
-              value={newPersonSQL.nationality}
-              onChange={handleInputChangeSQL}
-            />
-            <button onClick={handleAddPersonSQL}>Agregar Persona SQL</button>
-          </div>
+              );
+            })}
+          </tbody>
+        </table>
+        <div className="form-container">
+          <input
+            type="text"
+            name="nid"
+            placeholder="DNI"
+            value={newPersonSQL.nid}
+            onChange={handleInputChangeSQL}
+          />
+          <input
+            type="text"
+            name="firstName"
+            placeholder="Nombre"
+            value={newPersonSQL.firstName}
+            onChange={handleInputChangeSQL}
+          />
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Apellido"
+            value={newPersonSQL.lastName}
+            onChange={handleInputChangeSQL}
+          />
+          <input
+            type="number"
+            name="age"
+            placeholder="Edad"
+            value={newPersonSQL.age}
+            onChange={handleInputChangeSQL}
+          />
+          <input
+            type="text"
+            name="gender"
+            placeholder="Género"
+            value={newPersonSQL.gender}
+            onChange={handleInputChangeSQL}
+          />
+          <input
+            type="text"
+            name="nationality"
+            placeholder="Nacionalidad"
+            value={newPersonSQL.nationality}
+            onChange={handleInputChangeSQL}
+          />
+          <button onClick={handleAddPersonSQL}>Agregar Persona SQL</button>
         </div>
-        <div>
-          <h2>NoSQL Data</h2>
-          <table {...tableNoSQL.getTableProps()}>
-            <thead>
-              {tableNoSQL.headerGroups.map(headerGroup => (
-                <tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.id}>
-                  {headerGroup.headers.map(column => (
-                    <th {...column.getHeaderProps()} key={column.id}>{column.render('Header')}</th>
+      </div>
+      <div className="table-container">
+        <h2>NoSQL Data</h2>
+        <table {...tableNoSQL.getTableProps()}>
+          <thead>
+            {tableNoSQL.headerGroups.map(headerGroup => (
+              <tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.id}>
+                {headerGroup.headers.map(column => (
+                  <th {...column.getHeaderProps()} key={column.id}>{column.render('Header')}</th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody {...tableNoSQL.getTableBodyProps()}>
+            {tableNoSQL.rows.map(row => {
+              tableNoSQL.prepareRow(row);
+              return (
+                <tr {...row.getRowProps()} key={row.original.nid}>
+                  {row.cells.map(cell => (
+                    <td {...cell.getCellProps()} key={cell.column.id}>{cell.render('Cell')}</td>
                   ))}
                 </tr>
-              ))}
-            </thead>
-            <tbody {...tableNoSQL.getTableBodyProps()}>
-              {tableNoSQL.rows.map(row => {
-                tableNoSQL.prepareRow(row);
-                return (
-                  <tr {...row.getRowProps()} key={row.original.nid}>
-                    {row.cells.map(cell => (
-                      <td {...cell.getCellProps()} key={cell.column.id}>{cell.render('Cell')}</td>
-                    ))}
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-          <div>
-            <h2>Agregar Persona NoSQL</h2>
-            <input
-              type="text"
-              name="nid"
-              placeholder="DNI"
-              value={newPersonNoSQL.nid}
-              onChange={handleInputChangeNoSQL}
-            />
-            <input
-              type="text"
-              name="firstName"
-              placeholder="Nombre"
-              value={newPersonNoSQL.firstName}
-              onChange={handleInputChangeNoSQL}
-            />
-            <input
-              type="text"
-              name="lastName"
-              placeholder="Apellido"
-              value={newPersonNoSQL.lastName}
-              onChange={handleInputChangeNoSQL}
-            />
-            <input
-              type="number"
-              name="age"
-              placeholder="Edad"
-              value={newPersonNoSQL.age}
-              onChange={handleInputChangeNoSQL}
-            />
-            <input
-              type="text"
-              name="gender"
-              placeholder="Género"
-              value={newPersonNoSQL.gender}
-              onChange={handleInputChangeNoSQL}
-            />
-            <input
-              type="text"
-              name="nationality"
-              placeholder="Nacionalidad"
-              value={newPersonNoSQL.nationality}
-              onChange={handleInputChangeNoSQL}
-            />
-            <button onClick={handleAddPersonNoSQL}>Agregar Persona NoSQL</button>
-          </div>
+              );
+            })}
+          </tbody>
+        </table>
+        <div className="form-container">
+          <input
+            type="text"
+            name="nid"
+            placeholder="DNI"
+            value={newPersonNoSQL.nid}
+            onChange={handleInputChangeNoSQL}
+          />
+          <input
+            type="text"
+            name="firstName"
+            placeholder="Nombre"
+            value={newPersonNoSQL.firstName}
+            onChange={handleInputChangeNoSQL}
+          />
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Apellido"
+            value={newPersonNoSQL.lastName}
+            onChange={handleInputChangeNoSQL}
+          />
+          <input
+            type="number"
+            name="age"
+            placeholder="Edad"
+            value={newPersonNoSQL.age}
+            onChange={handleInputChangeNoSQL}
+          />
+          <input
+            type="text"
+            name="gender"
+            placeholder="Género"
+            value={newPersonNoSQL.gender}
+            onChange={handleInputChangeNoSQL}
+          />
+          <input
+            type="text"
+            name="nationality"
+            placeholder="Nacionalidad"
+            value={newPersonNoSQL.nationality}
+            onChange={handleInputChangeNoSQL}
+          />
+          <button onClick={handleAddPersonNoSQL}>Agregar Persona NoSQL</button>
         </div>
       </div>
     </div>
