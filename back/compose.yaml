@@ -1,0 +1,36 @@
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: example_password   # Root password for MySQL
+      MYSQL_DATABASE: people                  # Database name
+      MYSQL_USER: your_mysql_user             # Optional: Add user (for security)
+      MYSQL_PASSWORD: your_mysql_password     # Optional: Add user password
+    ports:
+      - "3306:3306"  # Expose MySQL on port 3306
+    networks:
+      - mynetwork
+    volumes:
+      - mysql_data:/var/lib/mysql             # Persistent storage for MySQL data
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root       # MongoDB root user
+      MONGO_INITDB_ROOT_PASSWORD: example_password
+    ports:
+      - "27017:27017"  # Expose MongoDB on port 27017
+    networks:
+      - mynetwork
+    volumes:
+      - mongodb_data:/data/db               # Persistent storage for MongoDB data
+
+networks:
+  mynetwork:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  mongodb_data:
