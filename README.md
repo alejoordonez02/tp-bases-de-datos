@@ -1,5 +1,8 @@
 # Trabajo Práctico BDD
 
+## Screenshot de la app
+![](screenshot.png)
+
 ## Levantar de la aplicación
 Para levantar la aplicación hay que ejecutar los siguientes comandos. Primero levantar el backend:
 ```
