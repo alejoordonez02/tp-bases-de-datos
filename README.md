@@ -7,6 +7,11 @@
 ## Screenshot de la app
 ![](screenshot.png)
 
+## Dependencias
+- Maven
+- Java 23
+- npm
+
 ## Levantar de la aplicación
 Para levantar la aplicación hay que ejecutar los siguientes comandos. Primero levantar el backend:
 ```
